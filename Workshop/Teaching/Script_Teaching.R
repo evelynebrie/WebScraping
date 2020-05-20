@@ -84,12 +84,12 @@ colnames(finalDataset) # Seeing all column names
 
 finalDataset <- finalDataset[,-3] # Removing the "link" column
 
-
 # The two problematic columns are "created_by" and "deadline" 
 
 # The first thing we want to do is to remove the characters that are always present
 finalDataset$created_by <- gsub("Created by ","",finalDataset$created_by) # Replace all occurences of this string by "" (i.e. nothing)
-finalDataset$deadline <- gsub("\n        All petitions run for 6 months","",finalDataset$created_by)
+finalDataset$deadline <- gsub("All petitions run for 6 months","",finalDataset$deadline)
+finalDataset$deadline <- gsub("Deadline","",finalDataset$deadline)
 
 # Now we might want to remove the extra white space in some of the vectors
 trim <- function (x) gsub("^\\s+|\\s+$", "", x) # Create a function called trim() to remove white space at the beginning and end of the strings
